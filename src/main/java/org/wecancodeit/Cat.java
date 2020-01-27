@@ -16,7 +16,7 @@ public class Cat extends OrganicAnimal {
 	
 	
 	public void catTick() {
-		if (Cat.super.getPoo() > 5) {
+		if (super.getPoo() > 5) {
 			useLitterBox();
 		}
 		
@@ -24,7 +24,8 @@ public class Cat extends OrganicAnimal {
 	}
 
 	private void useLitterBox() {
-		//currently does nothing but once shelter has litter box then this should FILL IT!
+		super.poo();
+		//once shelter has litter box then this should FILL IT!
 		
 	}
 

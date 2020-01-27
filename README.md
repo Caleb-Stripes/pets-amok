@@ -5,18 +5,18 @@ TDD for Animal super class which will contain the instance variables that organi
 
 TDD Organic class that will be parent class for organic dog and organic cat classes
 
+TDD Robotic class that will be parent class for robotic dog and robotic cat classes
+
+TDD o-dog [x], o-cat [x], r-dog [x] and r-cat [x] classes
+
 Current Code Objectives
 ***********************
 
-TDD Robotic class that will be parent class for robotic dog and robotic cat classes
+TDD interface for Animals and 'implement' it in Animal Class
 
 Foreseeable Code Objectives
 ***************************
 
-
-TDD o-dog, o-cat, r-dog and r-cat classes
-
-TDD interface for Animals and 'implement' it in Animal Class
 
 TDD interface for Organic Animals and 'implement' it in the Organic Animal Class 
 

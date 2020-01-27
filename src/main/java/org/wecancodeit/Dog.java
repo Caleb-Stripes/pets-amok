@@ -13,8 +13,9 @@ public class Dog extends OrganicAnimal {
 	}
 
 	public void dogTick() {
-		if (Dog.super.getPoo() >= 7) {
+		if (super.getPoo() >= 7) {
 			soilsCage();
+			super.poo();
 		}
 	}
 

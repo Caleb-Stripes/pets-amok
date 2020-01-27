@@ -40,4 +40,8 @@ public class OrganicAnimal extends Animal {
 		
 	}
 
+	public void poo() {
+		this.bowels = 0;
+	}
+
 }
