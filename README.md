@@ -1,20 +1,18 @@
 Completed Code Objectives
 *************************
 
+TDD for Animal super class which will contain the instance variables that organic and robotic animals share
 
+TDD Organic class that will be parent class for organic dog and organic cat classes
 
 Current Code Objectives
 ***********************
 
-TDD for Animal super class which will contain the instance variables that organic and robotic animals share
-
+TDD Robotic class that will be parent class for robotic dog and robotic cat classes
 
 Foreseeable Code Objectives
 ***************************
 
-TDD Organic class that will be parent class for organic dog and organic cat classes
-
-TDD Robotic class that will be parent class for robotic dog and robotic cat classes
 
 TDD o-dog, o-cat, r-dog and r-cat classes
 
@@ -45,3 +43,4 @@ Modify organic tick() to indicate the amount of waste a pet creates
 Introduce methods that allow user to walkAllDogs, cleanAllCages, emptyAllLitterBoxes, and oilAllRobots
 
 In addition to previous shelter applications functions, add options for the do-all methods
+
