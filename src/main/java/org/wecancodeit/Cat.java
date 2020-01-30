@@ -1,8 +1,8 @@
 package org.wecancodeit;
 
-public class Cat extends OrganicAnimal {
+import org.wecancodeit.Shelter;
 
-	
+public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 
 	private static final String type = "Cat";
 
@@ -13,20 +13,44 @@ public class Cat extends OrganicAnimal {
 	public String getType() {
 		return type;
 	}
-	
-	
+
 	public void catTick() {
 		if (super.getPoo() > 5) {
-			useLitterBox();
+			poo();
+			Shelter.useLitterBox();
 		}
-		
-		
+		drink();
+		eat();
+		play();
+
 	}
 
-	private void useLitterBox() {
-		super.poo();
-		//once shelter has litter box then this should FILL IT!
-		
+	@Override
+	public void eat() {
+		if (super.getHunger() > 5) {
+			super.eatSome();
+		}
+
+	}
+
+	@Override
+	public void drink() {
+		if (super.getThirst() > 5) {
+			super.drinkSome();
+		}
+
+	}
+
+	@Override
+	public void play() {
+		if (super.getBoredom() > 5) {
+			super.playSome();
+		}
+	}
+
+	@Override
+	public void poo() {
+		super.goPoo();
 	}
 
 }

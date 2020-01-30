@@ -43,4 +43,17 @@ public class OrganicAnimalTest {
 		assertEquals(bBefore + 1, bAfter);
 		assertEquals(pBefore + 1, pAfter);
 	}
+	
+	@Test
+	public void playingShouldResetBoredom() {
+		int result = underTest.getBoredom();
+		underTest.organicTick();
+		underTest.organicTick();
+		int result2 = underTest.getBoredom();
+		underTest.playSome();
+		int result0 = underTest.getBoredom();
+		assertEquals(result, 0);
+		assertEquals(result2, 2);
+		assertEquals(result0, 0);
+	}
 }

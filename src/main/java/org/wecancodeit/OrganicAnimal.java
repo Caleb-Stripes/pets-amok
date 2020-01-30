@@ -27,9 +27,26 @@ public class OrganicAnimal extends Animal {
 	public int getBoredom() {
 		return boredom;
 	}
-	
+
 	public int getPoo() {
 		return bowels;
+	}
+
+	public void drinkSome() {
+		this.thirst = 0;
+	}
+
+	public void goPoo() {
+		this.bowels = 0;
+	}
+
+	public void eatSome() {
+		this.hunger = 0;
+
+	}
+
+	public void playSome() {
+		this.boredom = 0;
 	}
 
 	public void organicTick() {
@@ -37,11 +54,7 @@ public class OrganicAnimal extends Animal {
 		thirst++;
 		boredom++;
 		bowels++;
-		
-	}
 
-	public void poo() {
-		this.bowels = 0;
 	}
 
 }
