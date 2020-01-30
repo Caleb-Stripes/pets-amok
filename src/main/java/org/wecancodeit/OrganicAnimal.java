@@ -1,6 +1,6 @@
 package org.wecancodeit;
 
-public class OrganicAnimal extends Animal {
+public abstract class OrganicAnimal extends Animal {
 
 	private int hunger;
 	private int thirst;

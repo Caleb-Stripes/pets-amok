@@ -23,8 +23,7 @@ Modify organic tick() to indicate the amount of waste a pet creates
 Current Code Objectives
 ***********************
 
-TDD interface for Robotic Animals and 'implement' it in the Robotic Animal Class
-
+Revise or Code dogWalk method to decrease chance to soil cage and increase happiness (this will use iterable/iterator)
 
 Foreseeable Code Objectives
 ***************************
@@ -36,8 +35,6 @@ Review that all variables are properly encapsulated
 Review that all methods have correct visibility modifiers
 
 Code in an over-all health variable based on the other statistics of the animals
-
-Revise or Code dogWalk method to decrease chance to soil cage and increase happiness (this will use iterable/iterator)
 
 Code oiling and charging methods for robotic pets
 

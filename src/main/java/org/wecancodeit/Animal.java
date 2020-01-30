@@ -1,6 +1,6 @@
 package org.wecancodeit;
 
-public class Animal {
+public abstract class Animal {
 
 	private String name;
 	private String description;

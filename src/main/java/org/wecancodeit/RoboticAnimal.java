@@ -1,6 +1,6 @@
 package org.wecancodeit;
 
-public class RoboticAnimal extends Animal {
+public abstract class RoboticAnimal extends Animal {
 // RoboticAnimal, OrganicAnimal and Animal are abstract rather than concrete classes
 	//this is because they don't create objects, but rather tell their child classes how to create classes
 	

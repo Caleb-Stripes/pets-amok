@@ -27,7 +27,8 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 
 	@Override
 	public void eat() {
-		if (super.getHunger() > 5) {
+		if (Shelter.foodDishes > 1) {
+			Shelter.animalEats(0.25);
 			super.eatSome();
 		}
 
