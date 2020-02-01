@@ -8,6 +8,10 @@ public class LitterBox {
 		this.pooLevel = pooLevel;
 	}
 	
+	public int getPooLevel() {
+		return pooLevel;
+	}
+	
 	public String getLitterBoxStatus() {
 		String litterBoxStatus = null;
 		if (pooLevel < 3) {
@@ -17,6 +21,7 @@ public class LitterBox {
 		} else {
 			litterBoxStatus = "The litter box reeks.";
 		}
+		System.out.println(litterBoxStatus);
 		return litterBoxStatus;
 	}
 

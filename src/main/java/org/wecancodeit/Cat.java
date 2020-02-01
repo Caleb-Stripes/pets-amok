@@ -1,29 +1,23 @@
 package org.wecancodeit;
 
-import org.wecancodeit.Shelter;
+
 
 public class Cat extends OrganicAnimal implements OrganicAnimalThings {
-
-	private static final String type = "Cat";
 
 	public Cat(String name, String description, int hunger, int thirst, int boredom, int bowels) {
 		super(name, description, hunger, thirst, boredom, bowels);
 	}
 
-	public String getType() {
-		return type;
-	}
-
 	public void catTick() {
 		if (super.getPoo() > 5) {
 			poo();
-			Shelter.useLitterBox();
+			
 		}
 		drink();
 		eat();
 		play();
 
-	}
+	}  //--move this function into the tick for all pets in the shelter class
 
 	@Override
 	public void eat() {

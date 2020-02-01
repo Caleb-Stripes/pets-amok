@@ -9,7 +9,7 @@ public abstract class Animal {
 		this.name = name;
 		this.description = description;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -18,6 +18,4 @@ public abstract class Animal {
 		return description;
 	}
 
-	
-	
 }
