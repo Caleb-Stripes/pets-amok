@@ -27,7 +27,13 @@ public class Shelter {
 	public Collection<Animal> getAllPets() {
 		return shelter.values();
 	}
+	
+	public int getPopulation() {
+		return shelter.size();
+	}
 
+	// gets a successive value for newly created pets to assign as a map key
+	
 	public int getPetKey() {
 		totalKeys++;
 		petKey = (totalKeys);
@@ -38,7 +44,7 @@ public class Shelter {
 	 * This method will return strings of key and value pairs from the shelter map
 	 * it should be used in the application whenever a roster is needed.
 	 */
-	String keyPetPair;
+	private String keyPetPair;
 
 	public String getRosterWithKeys() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
@@ -59,9 +65,9 @@ public class Shelter {
 	 * specific instantiation method.
 	 */
 
-	String newPetName;
-	String newDescription;
-	String newType;
+	protected String newPetName;
+	protected String newDescription;
+	protected String newType;
 
 	public Animal addNewCustomPet() {
 		switch (newType) {
@@ -95,20 +101,24 @@ public class Shelter {
 		this.newType = newType;
 		return newType;
 	}
+	
+	/* This code should tick all the pets in the shelter so that the passage of time
+	 * is emulated.
+	 */
 
-	public int getPopulation() {
-		return shelter.size();
-	}
-
-	public void shelterCatTick() {
-
-	}
 
 	public void tickAllPets() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			System.out.println("tick");
 			if (entry instanceof Cat) {
 				if (((Cat) entry).getPoo() > 0) {
+					catLitterBox.addPoo(1);
+				}
+				((Animal) entry).tick();
+			}
+			if (entry instanceof Dog) {
+				if (((Dog) entry).getPoo() > 0) {
+					dogCages.addPoo(3);
 				}
 			}
 
