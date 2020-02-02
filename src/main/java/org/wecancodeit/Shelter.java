@@ -17,7 +17,7 @@ public class Shelter {
 	 * then that animal gets adopted, will the iterator be able to jump the key
 	 * gap?)
 	 */
-	
+
 	private int petKey;
 	private int totalKeys;
 
@@ -106,7 +106,47 @@ public class Shelter {
 		this.newType = newType;
 		return newType;
 	}
+	
+	/*
+	 * Here is a method to walk all the dogs
+	 */
+	
+	public void walkADog() {
+		//TODO walk a dog by selection from roster
+	}
+	
+	public void walkAllOrganicDogs() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry instanceof Dog) {
+				((Dog) entry).goPoo();
+				((Dog) entry).play();
+			} 
+		}
+	}
+	
+	/*
+	 * Here is a method to oil all robotic pets
+	 */
+	
+	public void oilAllRobots() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry instanceof RoboticAnimal) {
+				((RoboticAnimal) entry).lubeUp();
+			}
+		}
+	}
 
+	/*
+	 * And one to charge all robotic pets
+	 */
+	
+	public void chargeAllRobots() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry instanceof RoboticAnimal) {
+				((RoboticAnimal) entry).chargeUp();
+			}
+		}
+	}
 	/*
 	 * This code should tick all the pets in the shelter so that the passage of time
 	 * is emulated.
@@ -115,16 +155,31 @@ public class Shelter {
 	public void tickAllPets() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			System.out.println("tick");
-			if (entry instanceof Cat) {
+			// organic split off
+			if (entry instanceof OrganicAnimal) {
+				if (entry instanceof Cat) {
+				}
 				if (((Cat) entry).getPoo() > 0) {
 					catLitterBox.addPoo(1);
 				}
 				((Animal) entry).tick();
-			}
-			if (entry instanceof Dog) {
-				if (((Dog) entry).getPoo() > 0) {
-					dogCages.addPoo(3);
+				if (entry instanceof Dog) {
+					if (((Dog) entry).getPoo() > 0) {
+						dogCages.addPoo(3);
+					}
+					((Dog) entry).tick();
 				}
+				//return a status update of organic animal
+			}
+			// robotic split off
+			if (entry instanceof RoboticAnimal) {
+				if (entry instanceof RoboticCat) {
+					((RoboticCat) entry).tick();
+				}
+				if (entry instanceof RoboticDog) {
+					((RoboticDog) entry).tick();
+				}
+				//return a status update of robotic animal
 			}
 
 		}

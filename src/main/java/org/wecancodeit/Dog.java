@@ -12,7 +12,6 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 		}
 		eat();
 		drink();
-		play();
 	} 
 
 	@Override
@@ -38,8 +37,7 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 
 	@Override
 	public void play() {
-		// An if statement that checked for other dogs with desires to play here could
-		// be interesting.
+		super.playSome();
 
 	}
 	
