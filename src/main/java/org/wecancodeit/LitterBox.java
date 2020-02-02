@@ -2,38 +2,38 @@ package org.wecancodeit;
 
 public class LitterBox {
 
+	/* This class will tell the program what a litter box is and will also be used
+	 * for the code of dog cages. 
+	 */
+	
 	private int pooLevel;
+	private String boxStatus;
+	private String name;
 	
-	public LitterBox(int pooLevel) {
+	public LitterBox(int pooLevel, String name) {
 		this.pooLevel = pooLevel;
-	}
-	
-	public int getPooLevel() {
-		return pooLevel;
-	}
-	
-	public String getLitterBoxStatus() {
-		String litterBoxStatus = null;
-		if (pooLevel < 3) {
-			litterBoxStatus = "The litter box is fresh.";
-		} else if (pooLevel > 2 && pooLevel < 6) {
-			litterBoxStatus = "The litter box is starting to stink.";
-		} else {
-			litterBoxStatus = "The litter box reeks.";
-		}
-		System.out.println(litterBoxStatus);
-		return litterBoxStatus;
+		this.name = name;
 	}
 
-	public void addPoo(int poo) {
-		pooLevel = pooLevel + poo;		
+	public String getLitterBoxStatus() {
+		if (pooLevel < 3) {
+			boxStatus = "The " + name + " is fresh.";
+		}
+		else if (pooLevel < 6) {
+			boxStatus = "The " + name + " is starting to stink.";
+		}
+		else if (pooLevel > 5) {
+			boxStatus = "The " + name + " reeks.";
+		}
+		return boxStatus;
+	}
+
+	public void addPoo(int i) {
+		pooLevel = pooLevel + i;
 	}
 
 	public void cleanLitterBox() {
 		pooLevel = 0;
-		
 	}
-	
-	
-	
+
 }

@@ -18,4 +18,17 @@ public abstract class Animal {
 		return description;
 	}
 
+	public void tick() {
+
+	}
+
+	public void getStatus() {
+
+	}
+
+	public int flexAction() {
+		return 0;
+
+	}
+
 }

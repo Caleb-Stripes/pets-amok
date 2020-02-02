@@ -1,23 +1,34 @@
 package org.wecancodeit;
 
-
-
 public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 
 	public Cat(String name, String description, int hunger, int thirst, int boredom, int bowels) {
 		super(name, description, hunger, thirst, boredom, bowels);
 	}
 
-	public void catTick() {
+	@Override
+	public void getStatus() {
+		System.out.println("Hunger:" + getHunger());
+		System.out.println("Thirst:" + getThirst());
+		System.out.println("Boredom:" + getBoredom());
+		System.out.println("Bowels:" + super.getPoo());
+	}
+
+	@Override
+	public void tick() {
+		super.organicTick();
 		if (super.getPoo() > 5) {
 			poo();
-			
+			System.out.println("I pooed");
 		}
 		drink();
+		System.out.println("I drank");
 		eat();
+		System.out.println("I ate");
 		play();
+		System.out.println("I played");
 
-	}  //--move this function into the tick for all pets in the shelter class
+	}
 
 	@Override
 	public void eat() {
@@ -48,4 +59,8 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 		super.goPoo();
 	}
 
+	@Override
+	public int flexAction() {
+		return super.getPoo();
+	}
 }

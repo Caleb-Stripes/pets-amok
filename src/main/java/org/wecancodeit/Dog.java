@@ -1,22 +1,19 @@
 package org.wecancodeit;
 
-import org.wecancodeit.Shelter;
-
 public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 
 	public Dog(String name, String description, int hunger, int thirst, int boredom, int bowels) {
 		super(name, description, hunger, thirst, boredom, bowels);
 	}
 
-//	public void dogTick() {
-//		if (super.getPoo() >= 7) {
-//			poo();
-//			Shelter.dogPooAccident();
-//		}
-//		eat();
-//		drink();
-//		play();
-//	} --move this function to the tick for all pets in the shelter class
+	public void dogTick() {
+		if (super.getPoo() >= 7) {
+			poo();
+		}
+		eat();
+		drink();
+		play();
+	} 
 
 	@Override
 	public void poo() {

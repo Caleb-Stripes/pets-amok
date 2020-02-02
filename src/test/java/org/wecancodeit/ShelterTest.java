@@ -24,5 +24,44 @@ public class ShelterTest {
 		assertEquals(3, result3);
 	}
 	
+	@Test
+	public void hueyShouldPoopInTheBox() {
+		String result = underTest.getLitterBoxStatus();
+		assertEquals("The litter box is fresh.", result);
+		underTest.catPoosInBox(3);
+		String result2 = underTest.getLitterBoxStatus();
+		assertEquals("The litter box is starting to stink.", result2);
+		underTest.catPoosInBox(3);
+		String result3 = underTest.getLitterBoxStatus();
+		assertEquals("The litter box reeks.", result3);
+		underTest.cleanCatLitterBox();
+		String result4 = underTest.getLitterBoxStatus();
+		assertEquals("The litter box is fresh.", result4);
+	}
 	
+	@Test
+	public void ottoShouldPoopInTheCage() {
+		String result = underTest.getDogCageStatus();
+		assertEquals("The dog cages is fresh.", result);
+		underTest.dogPoosInCage(3);
+		String result2 = underTest.getDogCageStatus();
+		assertEquals("The dog cages is starting to stink.", result2);
+		underTest.dogPoosInCage(3);
+		String result3 = underTest.getDogCageStatus();
+		assertEquals("The dog cages reeks.", result3);
+		underTest.cleanDogCages();
+		String result4 = underTest.getDogCageStatus();
+		assertEquals("The dog cages is fresh.", result4);
+	}
+	
+	@Test
+	public void shouldBeAbleToFindAPetsKey() {
+		String result = underTest.getKey();
+		assertEquals("3\tSparky", result);
+	}
+	
+	@Test
+	public void shouldAddCustomPetToShelter() {
+		
+	}
 }

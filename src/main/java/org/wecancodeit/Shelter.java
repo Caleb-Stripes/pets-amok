@@ -21,6 +21,8 @@ public class Shelter {
 	private int totalKeys;
 
 	private Map<Integer, Animal> shelter = new HashMap<>();
+	private LitterBox catLitterBox = new LitterBox(0, "litter box");
+	private LitterBox dogCages = new LitterBox(0, "dog cages");
 
 	public Collection<Animal> getAllPets() {
 		return shelter.values();
@@ -32,75 +34,39 @@ public class Shelter {
 		return petKey;
 	}
 
+	/* This method will return strings of key and value pairs from the shelter map
+	 * it should be used in the application whenever a roster is needed.
+	 */
+	String keyPetPair;
+	public String getKey() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
+			System.out.println(keyPetPair);
+		}
+		return keyPetPair;
+	}
+
 	public void addNewPetToShelter(Animal pet) {
 		shelter.put(getPetKey(), pet);
 	}
 
 	public int getPopulation() {
-
 		return shelter.size();
+	}
+
+	public void shelterCatTick() {
+
 	}
 
 	public void tickAllPets() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			String type = (entry.getValue().getClass().getTypeName().substring(16));
-			System.out.println(type);
-			System.out.println(
-					(entry.getValue().getName()) + " the " + entry.getValue().getClass().getTypeName().substring(16));
-			if (type.contentEquals("Cat")) {
-				System.out.println("Meow");
+			System.out.println("tick");
+			if (entry instanceof Cat) {
+				if (((Cat) entry).getPoo() > 0) {
+				}
 			}
-			if (type.contentEquals("Dog")) {
-				System.out.println("Arf");
-			}
-			if (type.contentEquals("RoboticDog")) {
-				System.out.println("b o w w o w");
-			}
-			if (type.contentEquals("RoboticCat")) {
-				System.out.println("m e o w");
-			}
+
 		}
-	}
-
-	/*
-	 * This code block dictates the cats waste control the use of static integers
-	 * and methods could cause issues if multiple shelter objects are instantiated
-	 */
-	private LitterBox litterBox = new LitterBox(0);
-
-	public void useLitterBox() {
-		litterBox.addPoo(1);
-	}
-
-	public void cleanLitterBox() {
-		litterBox.cleanLitterBox();
-	}
-
-	public void litterBoxStatus() {
-		litterBox.getLitterBoxStatus();
-	}
-
-	// This code block dictates the dogs waste control
-	private LitterBox dogCages = new LitterBox(0);
-
-	public void soilCages() {
-		dogCages.addPoo(3);
-	}
-
-	public void cleanCages() {
-		dogCages.cleanLitterBox();
-	}
-
-	public void getCageStatus() {
-		String cageStatus = null;
-		if (dogCages.getPooLevel() < 3) {
-			cageStatus = "The cages are clean.";
-		} else if (dogCages.getPooLevel() <= 6) {
-			cageStatus = "The cages could use some cleaning.";
-		} else {
-			cageStatus = "The cages are a Doggy-Do-do-Minefield!";
-		}
-		System.out.println(cageStatus);
 	}
 
 	// This code block allows organic animals to consume food if it available to
@@ -117,6 +83,49 @@ public class Shelter {
 
 	public static void animalEats(double amount) {
 		foodDishes = foodDishes - amount;
+	}
+
+	/*
+	 * This code will control how the cats interact with the litter box and also
+	 * allow the user to clean the litter box as needed. It will have a method to
+	 * give the user an idea of state of the litter box as time passes. A message
+	 * conveying this information should be coded into the tick method.
+	 */
+
+	public String getLitterBoxStatus() {
+		String boxStatus = catLitterBox.getLitterBoxStatus();
+		return boxStatus;
+	}
+
+	public void catPoosInBox(int i) {
+		catLitterBox.addPoo(i);
+
+	}
+
+	public void cleanCatLitterBox() {
+		catLitterBox.cleanLitterBox();
+
+	}
+
+	/*
+	 * Now the same code slightly adjusted for the dog cages. Polymorphism allows
+	 * DnD characters to assume animal like forms and/or use animal like abilities;
+	 * in this situation it allows a litterBox object to also represent a dog cage.
+	 */
+
+	public String getDogCageStatus() {
+		String cageStatus = dogCages.getLitterBoxStatus();
+		return cageStatus;
+
+	}
+
+	public void dogPoosInCage(int i) {
+		dogCages.addPoo(i);
+
+	}
+
+	public void cleanDogCages() {
+		dogCages.cleanLitterBox();
 	}
 
 }
