@@ -17,6 +17,7 @@ public class Shelter {
 	 * then that animal gets adopted, will the iterator be able to jump the key
 	 * gap?)
 	 */
+	
 	private int petKey;
 	private int totalKeys;
 
@@ -27,23 +28,30 @@ public class Shelter {
 	public Collection<Animal> getAllPets() {
 		return shelter.values();
 	}
-	
+
 	public int getPopulation() {
 		return shelter.size();
 	}
 
 	// gets a successive value for newly created pets to assign as a map key
-	
+
 	public int getPetKey() {
 		totalKeys++;
 		petKey = (totalKeys);
 		return petKey;
 	}
 
+	// adds a Animal to the shelter map
+
+	public void addNewPetToShelter(Animal pet) {
+		shelter.put(getPetKey(), pet);
+	}
+
 	/*
 	 * This method will return strings of key and value pairs from the shelter map
 	 * it should be used in the application whenever a roster is needed.
 	 */
+
 	private String keyPetPair;
 
 	public String getRosterWithKeys() {
@@ -52,10 +60,6 @@ public class Shelter {
 			System.out.println(keyPetPair);
 		}
 		return keyPetPair;
-	}
-
-	public void addNewPetToShelter(Animal pet) {
-		shelter.put(getPetKey(), pet);
 	}
 
 	/*
@@ -83,7 +87,8 @@ public class Shelter {
 		case ("Robotic Dog"):
 			Animal newRoboDog = new RoboticDog(newPetName, newDescription, 0, 0, null);
 			return newRoboDog;
-		default : return null;
+		default:
+			return null;
 		}
 	}
 
@@ -101,11 +106,11 @@ public class Shelter {
 		this.newType = newType;
 		return newType;
 	}
-	
-	/* This code should tick all the pets in the shelter so that the passage of time
+
+	/*
+	 * This code should tick all the pets in the shelter so that the passage of time
 	 * is emulated.
 	 */
-
 
 	public void tickAllPets() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
@@ -153,8 +158,8 @@ public class Shelter {
 		return boxStatus;
 	}
 
-	public void catPoosInBox(int i) {
-		catLitterBox.addPoo(i);
+	public void catPoosInBox(int amount) {
+		catLitterBox.addPoo(amount);
 
 	}
 
@@ -175,8 +180,8 @@ public class Shelter {
 
 	}
 
-	public void dogPoosInCage(int i) {
-		dogCages.addPoo(i);
+	public void dogPoosInCage(int amount) {
+		dogCages.addPoo(amount);
 
 	}
 
