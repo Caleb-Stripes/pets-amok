@@ -34,11 +34,13 @@ public class Shelter {
 		return petKey;
 	}
 
-	/* This method will return strings of key and value pairs from the shelter map
+	/*
+	 * This method will return strings of key and value pairs from the shelter map
 	 * it should be used in the application whenever a roster is needed.
 	 */
 	String keyPetPair;
-	public String getKey() {
+
+	public String getRosterWithKeys() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
 			System.out.println(keyPetPair);
@@ -48,6 +50,47 @@ public class Shelter {
 
 	public void addNewPetToShelter(Animal pet) {
 		shelter.put(getPetKey(), pet);
+	}
+
+	/*
+	 * This code allows for the admittance of new custom pets, it starts with a menu
+	 * option asking what kind of animal is being submitted. Then based on the user
+	 * input will enter a switch/case statement executing the appropriate type
+	 * specific instantiation method.
+	 */
+
+	String newPetName;
+	String newDescription;
+	String newType;
+
+	public void addNewCustomPet() {
+		switch (newType) {
+		case ("Cat"):
+			Animal newCat = new Cat(newPetName, newDescription, 0, 0, 0, 0);
+			shelter.put(getPetKey(), newCat);
+		case ("Dog"):
+			Animal newDog = new Dog(newPetName, newDescription, 0, 0, 0, 0);
+			shelter.put(getPetKey(), newDog);
+		case ("Robotic Cat"):
+			Animal newRoboCat = new RoboticCat(newPetName, newDescription, 0, 0, null);
+			shelter.put(getPetKey(), newRoboCat);
+		case ("Robotic Dog"):
+			Animal newRoboDog = new RoboticDog(newPetName, newDescription, 0, 0, null);
+			shelter.put(getPetKey(), newRoboDog);
+		}
+		getRosterWithKeys();
+	}
+
+	public String getNewName() {
+		return newPetName;
+	}
+
+	public String getNewDescription() {
+		return newDescription;
+	}
+
+	public String getNewType() {
+		return newType;
 	}
 
 	public int getPopulation() {

@@ -42,5 +42,11 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 		// be interesting.
 
 	}
+	
+	// a prepared integer return method for unforeseen use
+	@Override
+	public int flexAction() {
+		return 0;
+	}
 
 }

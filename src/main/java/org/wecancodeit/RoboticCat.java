@@ -2,7 +2,7 @@ package org.wecancodeit;
 
 public class RoboticCat extends RoboticAnimal {
 
-	public RoboticCat(String name, String description, String type, int lubeLevel, int energyLevel, String status) {
+	public RoboticCat(String name, String description, int lubeLevel, int energyLevel, String status) {
 		super(name, description, lubeLevel, energyLevel, status);
 	}
 
@@ -13,6 +13,12 @@ public class RoboticCat extends RoboticAnimal {
 			super.drainEnergy();
 			super.drainEnergy();
 		}
+	}
+	
+	//a prepared integer return method for unforeseen use
+	@Override
+	public int flexAction() {
+		return 0;
 	}
 
 }

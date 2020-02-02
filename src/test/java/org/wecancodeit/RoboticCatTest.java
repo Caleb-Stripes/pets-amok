@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class RoboticCatTest {
 
-	RoboticCat underTest = new RoboticCat(null, null, 10, 10, null);
+	RoboticCat underTest = new RoboticCat(null, null, null, 10, 10, null);
 	
 	@Test
 	public void roboticDogLubeTicksFast() {

@@ -20,7 +20,7 @@ public class PetsAmokApp {
 		System.out.println("");
 		shelter.tickAllPets();
 		
-		shelter.getKey();
+		shelter.getRosterWithKeys();
 		
 	}
 
