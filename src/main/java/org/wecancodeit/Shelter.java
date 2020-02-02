@@ -63,33 +63,36 @@ public class Shelter {
 	String newDescription;
 	String newType;
 
-	public void addNewCustomPet() {
+	public Animal addNewCustomPet() {
 		switch (newType) {
 		case ("Cat"):
 			Animal newCat = new Cat(newPetName, newDescription, 0, 0, 0, 0);
-			shelter.put(getPetKey(), newCat);
+			return newCat;
 		case ("Dog"):
 			Animal newDog = new Dog(newPetName, newDescription, 0, 0, 0, 0);
-			shelter.put(getPetKey(), newDog);
+			return newDog;
 		case ("Robotic Cat"):
 			Animal newRoboCat = new RoboticCat(newPetName, newDescription, 0, 0, null);
-			shelter.put(getPetKey(), newRoboCat);
+			return newRoboCat;
 		case ("Robotic Dog"):
 			Animal newRoboDog = new RoboticDog(newPetName, newDescription, 0, 0, null);
-			shelter.put(getPetKey(), newRoboDog);
+			return newRoboDog;
+		default : return null;
 		}
-		getRosterWithKeys();
 	}
 
-	public String getNewName() {
+	public String getNewName(String newName) {
+		this.newPetName = newName;
 		return newPetName;
 	}
 
-	public String getNewDescription() {
+	public String getNewDescription(String newDescription) {
+		this.newDescription = newDescription;
 		return newDescription;
 	}
 
-	public String getNewType() {
+	public String getNewType(String newType) {
+		this.newType = newType;
 		return newType;
 	}
 

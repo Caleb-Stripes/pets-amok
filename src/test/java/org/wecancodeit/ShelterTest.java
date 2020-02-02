@@ -55,12 +55,6 @@ public class ShelterTest {
 	}
 	
 	@Test
-	public void shouldBeAbleToFindAPetsKey() {
-		String result = underTest.getKey();
-		assertEquals("3\tSparky", result);
-	}
-	
-	@Test
 	public void shouldAddCustomPetToShelter() {
 		
 	}
