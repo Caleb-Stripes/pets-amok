@@ -17,6 +17,9 @@ public class RoboticDog extends RoboticAnimal {
 	//a prepared integer return method for unforeseen use
 	@Override
 	public int flexAction() {
+		super.drainLube();
+		super.drainLube();
+		super.drainLube();
 		return 0;
 	}
 

@@ -44,6 +44,8 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 	// a prepared integer return method for unforeseen use
 	@Override
 	public int flexAction() {
+		super.playSome();
+		super.goPoo();
 		return 0;
 	}
 

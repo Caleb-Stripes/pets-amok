@@ -106,28 +106,37 @@ public class Shelter {
 		this.newType = newType;
 		return newType;
 	}
-	
+
 	/*
-	 * Here is a method to walk all the dogs
+	 * Here are methods to walk a dog or all the dogs
 	 */
-	
-	public void walkADog() {
-		//TODO walk a dog by selection from roster
+
+	public void walkADog(int key) {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key && (entry instanceof Dog || entry instanceof RoboticDog)) {
+				entry.getValue().flexAction();
+				System.out.println("You and " + entry.getValue().getName() + " have a nice walk.");
+			} else if (entry.getKey() == key) {
+				System.out.println(entry.getValue().getName() + " isn't interested in walks.");
+			} else {
+				System.out.println("That key does not match any pets.");
+			}
+		}
 	}
-	
+
 	public void walkAllOrganicDogs() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			if (entry instanceof Dog) {
 				((Dog) entry).goPoo();
 				((Dog) entry).play();
-			} 
+			}
 		}
 	}
-	
+
 	/*
 	 * Here is a method to oil all robotic pets
 	 */
-	
+
 	public void oilAllRobots() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			if (entry instanceof RoboticAnimal) {
@@ -139,7 +148,7 @@ public class Shelter {
 	/*
 	 * And one to charge all robotic pets
 	 */
-	
+
 	public void chargeAllRobots() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			if (entry instanceof RoboticAnimal) {
@@ -169,7 +178,7 @@ public class Shelter {
 					}
 					((Dog) entry).tick();
 				}
-				//return a status update of organic animal
+				// return a status update of organic animal
 			}
 			// robotic split off
 			if (entry instanceof RoboticAnimal) {
@@ -179,7 +188,7 @@ public class Shelter {
 				if (entry instanceof RoboticDog) {
 					((RoboticDog) entry).tick();
 				}
-				//return a status update of robotic animal
+				// return a status update of robotic animal
 			}
 
 		}
@@ -242,6 +251,16 @@ public class Shelter {
 
 	public void cleanDogCages() {
 		dogCages.cleanLitterBox();
+	}
+
+	// Code for communicating the status of a pet
+	public void getPetStats(int key) {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key) {
+				System.out.println(entry.getValue().getName());
+				entry.getValue().getStatus();
+			}
+		}
 	}
 
 }
