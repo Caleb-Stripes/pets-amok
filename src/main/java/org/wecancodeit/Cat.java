@@ -19,7 +19,6 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 		super.organicTick();
 		if (super.getPoo() > 5) {
 			poo();
-			System.out.println("I pooed");
 		}
 		if (super.getHunger() > 5) {
 			eat();

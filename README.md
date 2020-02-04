@@ -34,20 +34,22 @@ Review that all methods have correct visibility modifiers
 
 Code in an over-all health variable based on the other statistics of the animals
 
+In addition to previous shelter applications functions, add options for the do-all methods
+
+Introduce methods that allow user to walkAllDogs, cleanAllCages, emptyAllLitterBoxes, and oilAllRobots
+
 Current Code Objectives
 ***********************
 
-Introduce methods that allow user to walkAllDogs, cleanAllCages, emptyAllLitterBoxes, and oilAllRobots
+Go back into app and change all loops to if else to add user input failure options
 
 Foreseeable Code Objectives
 ***************************
 
 
 
-In addition to previous shelter applications functions, add options for the do-all methods
 
 
-Go back into app and change all loops to if else to add user input failure options
 
 
 
