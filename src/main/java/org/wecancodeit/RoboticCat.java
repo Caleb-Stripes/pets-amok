@@ -20,5 +20,11 @@ public class RoboticCat extends RoboticAnimal {
 	public int flexAction() {
 		return 0;
 	}
+	
+	@Override
+	public void getStatus() {
+		System.out.println("Energy:" + super.getEnergyLevel());
+		System.out.println("Oil Level:" + super.getLubeLevel());
+	}
 
 }

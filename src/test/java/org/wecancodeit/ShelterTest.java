@@ -55,6 +55,13 @@ public class ShelterTest {
 	}
 	
 	@Test
+	public void walkingAnOrganicDogShouldResetPooAndBoredom( ) {
+		underTest.tickAllPets();
+		underTest.tickAllPets();
+		underTest.tickAllPets();
+			}
+	
+	@Test
 	public void shouldAddCustomPetToShelter() {
 		
 	}

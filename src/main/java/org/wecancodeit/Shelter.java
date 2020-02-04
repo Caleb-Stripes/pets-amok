@@ -62,6 +62,16 @@ public class Shelter {
 		return keyPetPair;
 	}
 
+	public void getDogRosterWithKeys() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
+			if (entry instanceof Dog) {
+				System.out.println(keyPetPair);
+			}
+		}
+
+	}
+
 	/*
 	 * This code allows for the admittance of new custom pets, it starts with a menu
 	 * option asking what kind of animal is being submitted. Then based on the user
@@ -131,6 +141,7 @@ public class Shelter {
 				((Dog) entry).play();
 			}
 		}
+		System.out.println("The dogs love you!");
 	}
 
 	/*
@@ -254,12 +265,20 @@ public class Shelter {
 	}
 
 	// Code for communicating the status of a pet
+
 	public void getPetStats(int key) {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			if (entry.getKey() == key) {
 				System.out.println(entry.getValue().getName());
 				entry.getValue().getStatus();
 			}
+		}
+	}
+
+	public void getAllPetStats() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			entry.getValue().getName();
+			entry.getValue().getStatus();
 		}
 	}
 

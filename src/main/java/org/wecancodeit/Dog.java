@@ -13,6 +13,14 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 		eat();
 		drink();
 	} 
+	
+	@Override
+	public void getStatus() {
+		System.out.println("Hunger:" + getHunger());
+		System.out.println("Thirst:" + getThirst());
+		System.out.println("Boredom:" + getBoredom());
+		System.out.println("Bowels:" + super.getPoo());
+	}
 
 	@Override
 	public void poo() {
