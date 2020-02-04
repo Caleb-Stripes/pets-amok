@@ -47,6 +47,18 @@ public class Shelter {
 		shelter.put(getPetKey(), pet);
 	}
 
+	// allows for adoptions
+
+	public void adoptPet(int key) {
+		Animal pet = null;
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key) {
+			pet = entry.getValue();
+			}
+		}
+		shelter.remove(key, pet);
+	}
+
 	/*
 	 * A method to return each loop used to convey the overall health of the pets
 	 * and shelter

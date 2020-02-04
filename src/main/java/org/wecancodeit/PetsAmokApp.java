@@ -145,15 +145,18 @@ public class PetsAmokApp {
 					System.out.println("Who would you like to adopt?");
 					System.out.println("Enter the coorisponding number.");
 					userChoice = input.nextLine();
-					//int userKey = Integer.parseInt(userChoice);
-					//shelter.adoptPet(userKey);
- 				}
-				// adoption and admittance
+					int userKey = Integer.parseInt(userChoice);
+					shelter.adoptPet(userKey);
+					userChoice = "0";
+				}
+				if (userChoice.contains("admitting")) {
+					//admitting
+				}
 				userChoice = "0";
 			}
 
 			if (userChoice.contentEquals("6")) {
-				
+
 				// shelter cleaning
 				userChoice = "0";
 			}
@@ -172,7 +175,7 @@ public class PetsAmokApp {
 	private static void menu5() {
 		System.out.println("");
 		System.out.println("Are you \"Adopting\" or \"Admitting\"?");
-		
+
 	}
 
 	private static void menu4submenu2() {
