@@ -131,16 +131,16 @@ public class Shelter {
 
 	public Animal addNewCustomPet() {
 		switch (newType) {
-		case ("Cat"):
+		case ("cat"):
 			Animal newCat = new Cat(newPetName, newDescription, 0, 0, 0, 0);
 			return newCat;
-		case ("Dog"):
+		case ("dog"):
 			Animal newDog = new Dog(newPetName, newDescription, 0, 0, 0, 0);
 			return newDog;
-		case ("Robotic Cat"):
+		case ("robotic cat"):
 			Animal newRoboCat = new RoboticCat(newPetName, newDescription, 0, 0, null);
 			return newRoboCat;
-		case ("Robotic Dog"):
+		case ("robotic dog"):
 			Animal newRoboDog = new RoboticDog(newPetName, newDescription, 0, 0, null);
 			return newRoboDog;
 		default:

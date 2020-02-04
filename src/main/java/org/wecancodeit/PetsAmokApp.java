@@ -150,7 +150,23 @@ public class PetsAmokApp {
 					userChoice = "0";
 				}
 				if (userChoice.contains("admitting")) {
-					//admitting
+					System.out.println("What kind of pet is it?");
+					System.out.println("\"Cat\", \"Dog\", \"Robotic Cat\", \"Robotic Dog\"");
+					addLine();
+					userChoice = input.nextLine();
+					shelter.getNewType(userChoice);
+					addLine();
+					System.out.println("What is its name?");
+					addLine();
+					userChoice = input.nextLine();
+					shelter.getNewName(userChoice);
+					addLine();
+					System.out.println("Describe the new pet.");
+					addLine();
+					userChoice = input.nextLine();
+					shelter.getNewDescription(userChoice);
+					shelter.addNewPetToShelter(shelter.addNewCustomPet());
+					System.out.println("Welcome, " + shelter.newPetName);
 				}
 				userChoice = "0";
 			}
