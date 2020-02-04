@@ -9,8 +9,8 @@ public class ShelterTest {
 	Shelter underTest = new Shelter();
 	Animal huey = new Cat("Huey", null, 0, 0, 0, 0);
 	Animal otto = new Dog("Otto", null, 0, 0, 0, 0);
-	Animal sparky = new RoboticDog("Sparky", null, 0, 0, null);
-	
+	Animal sparky = new RoboticDog("Sparky", null, 5, 5, null);
+
 	@Test
 	public void shouldAddPetToShelter() {
 		int result0 = underTest.getPopulation();
@@ -23,7 +23,7 @@ public class ShelterTest {
 		int result3 = underTest.getPopulation();
 		assertEquals(3, result3);
 	}
-	
+
 	@Test
 	public void hueyShouldPoopInTheBox() {
 		String result = underTest.getLitterBoxStatus();
@@ -38,7 +38,7 @@ public class ShelterTest {
 		String result4 = underTest.getLitterBoxStatus();
 		assertEquals("The litter box is fresh.", result4);
 	}
-	
+
 	@Test
 	public void ottoShouldPoopInTheCage() {
 		String result = underTest.getDogCageStatus();
@@ -53,5 +53,13 @@ public class ShelterTest {
 		String result4 = underTest.getDogCageStatus();
 		assertEquals("The dog cages is fresh.", result4);
 	}
-	
+
+	@Test
+	public void sparkyShouldGetCharged() {
+		underTest.addNewPetToShelter(sparky);
+		underTest.chargeAPet(1);
+		int result1 = ((RoboticAnimal) sparky).getEnergyLevel();
+		assertEquals(10, result1);
+	}
+
 }

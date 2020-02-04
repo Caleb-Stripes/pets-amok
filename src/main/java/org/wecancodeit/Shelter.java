@@ -81,7 +81,7 @@ public class Shelter {
 	public void getDogRosterWithKeys() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
-			if (entry instanceof Dog) {
+			if (entry.getValue() instanceof Dog) {
 				System.out.println(keyPetPair);
 			}
 		}
@@ -91,8 +91,17 @@ public class Shelter {
 	public void getOrganicRosterWithKeys() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
-			if (entry instanceof OrganicAnimal) {
+			if (entry.getValue() instanceof OrganicAnimal) {
 				System.out.println(keyPetPair);
+			}
+		}
+	}
+
+	public void getRoboticRosterWithKeys() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
+			if (entry.getValue() instanceof RoboticAnimal) {
+				System.out.println(keyPetPair + "\t" + entry.getValue().getHealth());
 			}
 		}
 	}
@@ -148,7 +157,7 @@ public class Shelter {
 
 	public void walkADog(int key) {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			if (entry.getKey() == key && (entry instanceof Dog || entry instanceof RoboticDog)) {
+			if (entry.getKey() == key && (entry.getValue() instanceof Dog || entry.getValue() instanceof RoboticDog)) {
 				entry.getValue().flexAction();
 				System.out.println("You and " + entry.getValue().getName() + " have a nice walk.");
 			} else if (entry.getKey() == key) {
@@ -161,9 +170,9 @@ public class Shelter {
 
 	public void walkAllOrganicDogs() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			if (entry instanceof Dog) {
-				((Dog) entry).goPoo();
-				((Dog) entry).play();
+			if (entry.getValue() instanceof Dog) {
+				((Dog) entry.getValue()).goPoo();
+				((Dog) entry.getValue()).play();
 			}
 		}
 		System.out.println("The dogs love you!");
@@ -175,8 +184,8 @@ public class Shelter {
 
 	public void feedAPet(int key) {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			if (entry.getKey() == key && (entry instanceof OrganicAnimal)) {
-				((OrganicAnimal) entry).eatSome();
+			if (entry.getKey() == key && (entry.getValue() instanceof OrganicAnimal)) {
+				((OrganicAnimal) entry.getValue()).eatSome();
 				System.out.println("You feed " + entry.getValue().getName());
 			} else if (entry.getKey() == key) {
 				System.out.println(entry.getValue().getName() + " isn't interested in food.");
@@ -188,8 +197,8 @@ public class Shelter {
 
 	public void waterAPet(int key) {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			if (entry.getKey() == key && (entry instanceof OrganicAnimal)) {
-				((OrganicAnimal) entry).drinkSome();
+			if (entry.getKey() == key && (entry.getValue() instanceof OrganicAnimal)) {
+				((OrganicAnimal) entry.getValue()).drinkSome();
 				System.out.println("You water " + entry.getValue().getName());
 			} else if (entry.getKey() == key) {
 				System.out.println(entry.getValue().getName() + " isn't interested in drinking.");
@@ -199,28 +208,58 @@ public class Shelter {
 		}
 	}
 	/*
-	 * Here is a method to oil all robotic pets
+	 * Here are the methods to oil robotic pets
 	 */
 
 	public void oilAllRobots() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			if (entry instanceof RoboticAnimal) {
-				((RoboticAnimal) entry).lubeUp();
+			if (entry.getValue() instanceof RoboticAnimal) {
+				((RoboticAnimal) entry.getValue()).lubeUp();
 			}
 		}
 	}
 
+	public void oilAPet(int key) {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key && (entry.getValue() instanceof RoboticAnimal)) {
+				((RoboticAnimal) entry.getValue()).lubeUp();
+				System.out.println("You oil " + entry.getValue().getName());
+			} else if (entry.getKey() == key) {
+				System.out.println(entry.getValue().getName() + " flees from oil.");
+			} else {
+				System.out.println("That key does not match any robotic pets.");
+			}
+		}
+	}
 	/*
-	 * And one to charge all robotic pets
+	 * And the ones to charge robotic pets
 	 */
 
 	public void chargeAllRobots() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			if (entry instanceof RoboticAnimal) {
-				((RoboticAnimal) entry).chargeUp();
+			if (entry.getValue() instanceof RoboticAnimal) {
+				((RoboticAnimal) entry.getValue()).chargeUp();
 			}
 		}
 	}
+
+	public void chargeAPet(int key) {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key) {
+				if (entry.getValue() instanceof RoboticAnimal == true) {
+					((RoboticAnimal) entry.getValue()).chargeUp();
+					System.out.println("You charge " + entry.getValue().getName());
+
+				} else if (entry.getValue() instanceof OrganicAnimal == true) {
+					System.out.println(entry.getValue().getName() + " just gets tangled in the cord.");
+
+				} else {
+					System.out.println("That key does not match any robotic pets.");
+				}
+			}
+		}
+	}
+
 	/*
 	 * This code should tick all the pets in the shelter so that the passage of time
 	 * is emulated.
@@ -228,32 +267,18 @@ public class Shelter {
 
 	public void tickAllPets() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			// organic split off
-			if (entry instanceof OrganicAnimal) {
-				if (entry instanceof Cat) {
-				}
-				if (((Cat) entry).getPoo() > 0) {
+
+			if (entry.getValue() instanceof Cat) {
+				if (((OrganicAnimal) entry.getValue()).getPoo() > 0) {
 					catLitterBox.addPoo(1);
 				}
-
-				((Animal) entry).tick();
-
-				if (entry instanceof Dog) {
-					if (((Dog) entry).getPoo() > 0) {
-						dogCages.addPoo(3);
-					}
-					((Dog) entry).tick();
+			}
+			if (entry.getValue() instanceof Dog) {
+				if (((OrganicAnimal) entry.getValue()).getPoo() > 0) {
+					dogCages.addPoo(3);
 				}
 			}
-			// robotic split off
-			if (entry instanceof RoboticAnimal) {
-				if (entry instanceof RoboticCat) {
-					((RoboticCat) entry).tick();
-				}
-				if (entry instanceof RoboticDog) {
-					((RoboticDog) entry).tick();
-				}
-			}
+			entry.getValue().tick();
 
 		}
 	}
@@ -343,8 +368,9 @@ public class Shelter {
 
 	public void getAllPetStats() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			entry.getValue().getName();
+			System.out.println(entry.getValue().getName());
 			entry.getValue().getStatus();
+			System.out.println("");
 		}
 	}
 

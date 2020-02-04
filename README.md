@@ -28,6 +28,12 @@ TDD shelter robot pets oil and charge levels
 
 Insure that robot pets can't be fed or watered and organic pets cannot be oiled or charged
 
+Review that all variables are properly encapsulated
+
+Review that all methods have correct visibility modifiers
+
+Code in an over-all health variable based on the other statistics of the animals
+
 Current Code Objectives
 ***********************
 
@@ -36,14 +42,12 @@ Introduce methods that allow user to walkAllDogs, cleanAllCages, emptyAllLitterB
 Foreseeable Code Objectives
 ***************************
 
-Review that all variables are properly encapsulated
 
-Review that all methods have correct visibility modifiers
-
-Code in an over-all health variable based on the other statistics of the animals
 
 In addition to previous shelter applications functions, add options for the do-all methods
 
+
+Go back into app and change all loops to if else to add user input failure options
 
 
 

@@ -35,7 +35,7 @@ public abstract class RoboticAnimal extends Animal {
 	}
 
 	public void chargeUp() {
-		this.energyLevel = 10;
+		energyLevel = 10;
 	}
 
 	public void drainLube() {
@@ -60,4 +60,33 @@ public abstract class RoboticAnimal extends Animal {
 		return status;
 	}
 
+	public String roboticPetHealth() {
+		String roboticStatus = (lube() + " and " + charge());
+		return roboticStatus;
+	}
+
+	private String charge() {
+		String chargeMessage;
+		if (getEnergyLevel() > 4) {
+			chargeMessage = "Has a good charge";
+		} else if (getEnergyLevel() > 0) {
+			chargeMessage = "Will need to charge soon";
+		} else {
+			chargeMessage = deadCharge();
+		}
+
+		return chargeMessage;
+	}
+
+	private String lube() {
+		String lubeMessage;
+		if (getLubeLevel() > 4) {
+			lubeMessage = "Has good mobility";
+		} else if (getLubeLevel() > 0) {
+			lubeMessage = "Will need lube soon";
+		} else {
+			lubeMessage = seizeUp();
+		}
+		return lubeMessage;
+	}
 }

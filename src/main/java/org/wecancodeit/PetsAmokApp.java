@@ -55,6 +55,7 @@ public class PetsAmokApp {
 					menu2submenu1();
 					addLine();
 					shelter.getDogRosterWithKeys();
+					userChoice = input.nextLine();
 					int userkey = Integer.parseInt(userChoice);
 					shelter.walkADog(userkey);
 					addLine();
@@ -103,15 +104,60 @@ public class PetsAmokApp {
 				addLine();
 			}
 			if (userChoice.contentEquals("4")) {
-				// robotic pets
+				shelter.getRoboticRosterWithKeys();
+				menu4();
+				userChoice = input.nextLine();
+				if (userChoice.toLowerCase().contains("oil")) {
+					menu4submenu1();
+					userChoice = input.nextLine();
+					if (userChoice.toLowerCase().contains("one")) {
+						System.out.println("Choose a pet to oil by their number.");
+						userChoice = input.nextLine();
+						int userKey = Integer.parseInt(userChoice);
+						shelter.oilAPet(userKey);
+					}
+					if (userChoice.toLowerCase().contains("all")) {
+						shelter.oilAllRobots();
+					}
+					userChoice = "0";
+				}
+				if (userChoice.toLowerCase().contains("charge")) {
+					menu4submenu2();
+					userChoice = input.nextLine();
+					if (userChoice.toLowerCase().contains("one")) {
+						System.out.println("Choose a pet to charge by their number.");
+						userChoice = input.nextLine();
+						int userKey = Integer.parseInt(userChoice);
+						shelter.chargeAPet(userKey);
+					}
+					if (userChoice.toLowerCase().contains("all")) {
+						shelter.chargeAllRobots();
+					}
+				}
 				userChoice = "0";
 			}
 			if (userChoice.contentEquals("5")) {
+				menu5();
+				userChoice = input.nextLine();
+				if (userChoice.toLowerCase().contentEquals("adopting")) {
+					shelter.getRosterWithKeysAndHealth();
+					addLine();
+					System.out.println("Who would you like to adopt?");
+					System.out.println("Enter the coorisponding number.");
+					userChoice = input.nextLine();
+					//int userKey = Integer.parseInt(userChoice);
+					//shelter.adoptPet(userKey);
+ 				}
 				// adoption and admittance
 				userChoice = "0";
 			}
 
 			if (userChoice.contentEquals("6")) {
+				
+				// shelter cleaning
+				userChoice = "0";
+			}
+			if (userChoice.contentEquals("7")) {
 				exit = 2;
 			}
 			userChoice = "0";
@@ -122,6 +168,29 @@ public class PetsAmokApp {
 		input.close();
 
 	} // class methods are in opposite order of occurrence.
+
+	private static void menu5() {
+		System.out.println("");
+		System.out.println("Are you \"Adopting\" or \"Admitting\"?");
+		
+	}
+
+	private static void menu4submenu2() {
+		System.out.println("");
+		System.out.println("Would you like to charge \"One\" or \"All\" robotic pets?");
+	}
+
+	private static void menu4submenu1() {
+		System.out.println("");
+		System.out.println("Would you like to oil \"One\" or \"All\" robotic pets?");
+	}
+
+	private static void menu4() {
+		System.out.println("");
+		System.out.println("What would you like to do with Robotic Pets?");
+		System.out.println("\"Oil\" or \"Charge\"");
+
+	}
 
 	private static void menu3submenu2() {
 		System.out.println("");
@@ -170,7 +239,8 @@ public class PetsAmokApp {
 		System.out.println("\t3:Feeding and Watering Pet(s)");
 		System.out.println("\t4:Robotic Pet(s)");
 		System.out.println("\t5:Adoption and Admittance");
-		System.out.println("\t6:Leave the Shelter");
+		System.out.println("\t6:Shelter Cleaning");
+		System.out.println("\t7:Leave the Shelter");
 	}
 
 	private static void welcomeStatement() {
