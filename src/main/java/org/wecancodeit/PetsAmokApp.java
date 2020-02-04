@@ -172,8 +172,21 @@ public class PetsAmokApp {
 			}
 
 			if (userChoice.contentEquals("6")) {
-
-				// shelter cleaning
+				menu6();
+				userChoice = input.nextLine();
+				if (userChoice.toLowerCase().contains("cages")) {
+					shelter.cleanCatLitterBox();
+					System.out.println("You recieve kitten appriciation.");
+				}
+				if (userChoice.toLowerCase().contains("litterbox")) {
+					shelter.cleanDogCages();
+					System.out.println("You recieve puppy love.");
+				}
+				if (userChoice.toLowerCase().contains("all")) {
+					shelter.cleanCatLitterBox();
+					shelter.cleanDogCages();
+					System.out.println("Good Job.");
+				}
 				userChoice = "0";
 			}
 			if (userChoice.contentEquals("7")) {
@@ -188,70 +201,77 @@ public class PetsAmokApp {
 
 	} // class methods are in opposite order of occurrence.
 
+	private static void menu6() {
+		System.out.println("***********************");
+		System.out.println("What would you like to clean?");
+		System.out.println("\"Cages\", \"Litter Box\", or \"All\"");
+
+	}
+
 	private static void menu5() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Are you \"Adopting\" or \"Admitting\"?");
 
 	}
 
 	private static void menu4submenu2() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to charge \"One\" or \"All\" robotic pets?");
 	}
 
 	private static void menu4submenu1() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to oil \"One\" or \"All\" robotic pets?");
 	}
 
 	private static void menu4() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("What would you like to do with Robotic Pets?");
 		System.out.println("\"Oil\" or \"Charge\"");
 
 	}
 
 	private static void menu3submenu2() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to water \"One\" or \"All\" pet(s)?");
 	}
 
 	private static void menu3submenu1() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to feed \"One\" or \"All\" pet(s)?");
 
 	}
 
 	private static void menu3() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to \"Feed\" or \"Water\"?");
 	}
 
 	private static void menu2submenu1() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Who would you like to walk?");
 		System.out.println("Input the number assosicate with the Dog.");
 	}
 
 	private static void menu2() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to walk \"one\" dog, or \"all\" the dogs?");
 	}
 
 	private static void menu1submenu1() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("You may input the number corisponding to the pet from");
 		System.out.println("the list above, or type all to see all pets status.");
 	}
 
 	private static void menu1() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Would you like to know more about the pets?");
 		System.out.println("Say yes or no");
 	}
 
 	private static void mainMenu() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Enter the number coorisponding to your choice.");
 		System.out.println("\t1:View Pet(s)");
 		System.out.println("\t2:Walk Dog(s)");
@@ -263,20 +283,20 @@ public class PetsAmokApp {
 	}
 
 	private static void welcomeStatement() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("Welcome to Caleb's pet shelter.");
 		System.out.println("Get ready, because these pets are A.M.O.K.");
 		System.out.println("\"A Madness Of some Kind\"");
 	}
 
 	private static void shelterHealthMessage() {
-		System.out.println("");
+		System.out.println("***********************");
 		System.out.println("\t\t -Shelter Health-");
 
 	}
 
 	private static void addLine() {
-		System.out.println("");
+		System.out.println("***********************");
 	}
 
 }
