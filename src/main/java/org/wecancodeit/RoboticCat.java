@@ -6,7 +6,8 @@ public class RoboticCat extends RoboticAnimal {
 		super(name, description, lubeLevel, energyLevel, status);
 	}
 
-	public void robotCatTick() {
+	public void tick() {
+		robotAnimalTick();
 		if (super.getEnergyLevel() < 5) {
 			super.deadCharge();
 		} else {
@@ -14,17 +15,23 @@ public class RoboticCat extends RoboticAnimal {
 			super.drainEnergy();
 		}
 	}
-	
-	//a prepared integer return method for unforeseen use
+
+	// a prepared integer return method for unforeseen use
 	@Override
 	public int flexAction() {
 		return 0;
 	}
-	
+
 	@Override
 	public void getStatus() {
 		System.out.println("Energy:" + super.getEnergyLevel());
 		System.out.println("Oil Level:" + super.getLubeLevel());
+	}
+
+	@Override
+	public double getHealth() {
+		double health = (((getLubeLevel() + getEnergyLevel()) / 2) * 10);
+		return health;
 	}
 
 }

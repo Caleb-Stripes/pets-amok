@@ -21,13 +21,14 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 			poo();
 			System.out.println("I pooed");
 		}
-		drink();
-		System.out.println("I drank");
-		eat();
-		System.out.println("I ate");
-		play();
-		System.out.println("I played");
+		if (super.getHunger() > 5) {
+			eat();
+		}
+		if (super.getThirst() > 5) {
+			drink();
 
+		}
+		play();
 	}
 
 	@Override
@@ -41,7 +42,8 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 
 	@Override
 	public void drink() {
-		if (super.getThirst() > 5) {
+		if (Shelter.waterDishes > 0.5) {
+			Shelter.animalDrinks(0.25);
 			super.drinkSome();
 		}
 
@@ -51,6 +53,7 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 	public void play() {
 		if (super.getBoredom() > 5) {
 			super.playSome();
+			System.out.println(super.getName() + " is playing with a stuffed mouse.");
 		}
 	}
 
@@ -62,5 +65,13 @@ public class Cat extends OrganicAnimal implements OrganicAnimalThings {
 	@Override
 	public int flexAction() {
 		return super.getPoo();
+	}
+
+	@Override
+	public double getHealth() {
+		double health = ((10 - ((getHunger() + getThirst() + getBoredom() + getPoo()) / 4)) * 10);
+
+		return health;
+
 	}
 }

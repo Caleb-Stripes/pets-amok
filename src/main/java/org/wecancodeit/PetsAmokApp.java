@@ -21,10 +21,16 @@ public class PetsAmokApp {
 		String userChoice;
 		int exit = 1;
 		do {
+			shelterHealthMessage();
+			System.out.println("Average Pet Health:" + shelter.getOverAllShelterHealth() + "%");
+			System.out.println("There is " + shelter.getFoodDish() + " oz. of food availible to pets.");
+			System.out.println("There is " + shelter.getWaterDish() + " oz. of water availile to pets.");
+			System.out.println(shelter.getLitterBoxStatus());
+			System.out.println(shelter.getDogCageStatus());
 			mainMenu();
 			userChoice = input.nextLine();
 			if (userChoice.contentEquals("1")) {
-				shelter.getRosterWithKeys();
+				shelter.getRosterWithKeysAndHealth();
 				menu1();
 				userChoice = input.nextLine();
 				if (userChoice.toLowerCase().contentEquals("yes")) {
@@ -63,20 +69,45 @@ public class PetsAmokApp {
 				userChoice = input.nextLine();
 				if (userChoice.toLowerCase().contains("feed")) {
 					menu3submenu1();
-					//feeding
+					userChoice = input.nextLine();
+					if (userChoice.toLowerCase().contentEquals("all")) {
+						shelter.fillFoodDishes();
+						System.out.println("There is " + shelter.getFoodDish() + " oz. of food availible to pets.");
+					}
+					if (userChoice.toLowerCase().contains("one")) {
+						shelter.getOrganicRosterWithKeys();
+						System.out.println("Choose a pet to feed by their number.");
+						userChoice = input.nextLine();
+						int userKey = Integer.parseInt(userChoice);
+						shelter.feedAPet(userKey);
+					}
+					userChoice = "0";
 				}
 				if (userChoice.toLowerCase().contains("water")) {
 					menu3submenu2();
-					//watering
+					userChoice = input.nextLine();
+					if (userChoice.toLowerCase().contains("all")) {
+						shelter.fillWaterDishes();
+						System.out.println("There is " + shelter.getWaterDish() + " oz. of water availible to pets.");
+					}
+					if (userChoice.toLowerCase().contains("one")) {
+						shelter.getOrganicRosterWithKeys();
+						System.out.println("Choose a pet to water by their number.");
+						userChoice = input.nextLine();
+						int userKey = Integer.parseInt(userChoice);
+						shelter.waterAPet(userKey);
+					}
+					userChoice = "0";
 				}
 				userChoice = "0";
+				addLine();
 			}
 			if (userChoice.contentEquals("4")) {
-				//robotic pets
+				// robotic pets
 				userChoice = "0";
 			}
 			if (userChoice.contentEquals("5")) {
-				//adoption and admittance
+				// adoption and admittance
 				userChoice = "0";
 			}
 
@@ -93,13 +124,14 @@ public class PetsAmokApp {
 	} // class methods are in opposite order of occurrence.
 
 	private static void menu3submenu2() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("");
+		System.out.println("Would you like to water \"One\" or \"All\" pet(s)?");
 	}
 
 	private static void menu3submenu1() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("");
+		System.out.println("Would you like to feed \"One\" or \"All\" pet(s)?");
+
 	}
 
 	private static void menu3() {
@@ -145,7 +177,13 @@ public class PetsAmokApp {
 		System.out.println("");
 		System.out.println("Welcome to Caleb's pet shelter.");
 		System.out.println("Get ready, because these pets are A.M.O.K.");
-		System.out.println("A Madness Of some Kind");
+		System.out.println("\"A Madness Of some Kind\"");
+	}
+
+	private static void shelterHealthMessage() {
+		System.out.println("");
+		System.out.println("\t\t -Shelter Health-");
+
 	}
 
 	private static void addLine() {

@@ -48,16 +48,32 @@ public class Shelter {
 	}
 
 	/*
+	 * A method to return each loop used to convey the overall health of the pets
+	 * and shelter
+	 */
+
+	private double overAllHealth;
+
+	public double getOverAllShelterHealth() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			double currentEntryHealth = entry.getValue().getHealth();
+			overAllHealth = overAllHealth + currentEntryHealth;
+		}
+		overAllHealth = (overAllHealth / shelter.size());
+		return overAllHealth;
+	}
+
+	/*
 	 * This method will return strings of key and value pairs from the shelter map
 	 * it should be used in the application whenever a roster is needed.
 	 */
 
 	private String keyPetPair;
 
-	public String getRosterWithKeys() {
+	public String getRosterWithKeysAndHealth() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
 			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
-			System.out.println(keyPetPair);
+			System.out.println(keyPetPair + " @" + entry.getValue().getHealth() + "% Health");
 		}
 		return keyPetPair;
 	}
@@ -70,6 +86,15 @@ public class Shelter {
 			}
 		}
 
+	}
+
+	public void getOrganicRosterWithKeys() {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			keyPetPair = (entry.getKey() + "\t" + entry.getValue().getName());
+			if (entry instanceof OrganicAnimal) {
+				System.out.println(keyPetPair);
+			}
+		}
 	}
 
 	/*
@@ -145,6 +170,35 @@ public class Shelter {
 	}
 
 	/*
+	 * Here is the feeding and watering method for single Organic pets
+	 */
+
+	public void feedAPet(int key) {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key && (entry instanceof OrganicAnimal)) {
+				((OrganicAnimal) entry).eatSome();
+				System.out.println("You feed " + entry.getValue().getName());
+			} else if (entry.getKey() == key) {
+				System.out.println(entry.getValue().getName() + " isn't interested in food.");
+			} else {
+				System.out.println("That key does not match any organic pets.");
+			}
+		}
+	}
+
+	public void waterAPet(int key) {
+		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
+			if (entry.getKey() == key && (entry instanceof OrganicAnimal)) {
+				((OrganicAnimal) entry).drinkSome();
+				System.out.println("You water " + entry.getValue().getName());
+			} else if (entry.getKey() == key) {
+				System.out.println(entry.getValue().getName() + " isn't interested in drinking.");
+			} else {
+				System.out.println("That key does not match any organic pets.");
+			}
+		}
+	}
+	/*
 	 * Here is a method to oil all robotic pets
 	 */
 
@@ -174,7 +228,6 @@ public class Shelter {
 
 	public void tickAllPets() {
 		for (Map.Entry<Integer, Animal> entry : shelter.entrySet()) {
-			System.out.println("tick");
 			// organic split off
 			if (entry instanceof OrganicAnimal) {
 				if (entry instanceof Cat) {
@@ -182,14 +235,15 @@ public class Shelter {
 				if (((Cat) entry).getPoo() > 0) {
 					catLitterBox.addPoo(1);
 				}
+
 				((Animal) entry).tick();
+
 				if (entry instanceof Dog) {
 					if (((Dog) entry).getPoo() > 0) {
 						dogCages.addPoo(3);
 					}
 					((Dog) entry).tick();
 				}
-				// return a status update of organic animal
 			}
 			// robotic split off
 			if (entry instanceof RoboticAnimal) {
@@ -199,7 +253,6 @@ public class Shelter {
 				if (entry instanceof RoboticDog) {
 					((RoboticDog) entry).tick();
 				}
-				// return a status update of robotic animal
 			}
 
 		}
@@ -221,6 +274,19 @@ public class Shelter {
 		foodDishes = foodDishes - amount;
 	}
 
+	public static double waterDishes;
+
+	public double getWaterDish() {
+		return waterDishes;
+	}
+
+	public void fillWaterDishes() {
+		waterDishes = 5.00;
+	}
+
+	public static void animalDrinks(double amount) {
+		waterDishes = waterDishes - amount;
+	}
 	/*
 	 * This code will control how the cats interact with the litter box and also
 	 * allow the user to clean the litter box as needed. It will have a method to

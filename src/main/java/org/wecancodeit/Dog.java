@@ -6,20 +6,27 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 		super(name, description, hunger, thirst, boredom, bowels);
 	}
 
-	public void dogTick() {
-		if (super.getPoo() >= 7) {
-			poo();
-		}
-		eat();
-		drink();
-	} 
-	
 	@Override
 	public void getStatus() {
 		System.out.println("Hunger:" + getHunger());
 		System.out.println("Thirst:" + getThirst());
 		System.out.println("Boredom:" + getBoredom());
 		System.out.println("Bowels:" + super.getPoo());
+	}
+
+	@Override
+	public void tick() {
+		super.organicTick();
+		if (super.getPoo() >= 7) {
+			poo();
+		}
+		if (super.getHunger() > 5) {
+			eat();
+		}
+		if (super.getThirst() > 5) {
+			drink();
+		}
+		play();
 	}
 
 	@Override
@@ -38,23 +45,35 @@ public class Dog extends OrganicAnimal implements OrganicAnimalThings {
 
 	@Override
 	public void drink() {
-		if (super.getThirst() > 3) {
+		if (Shelter.waterDishes > 0.5) {
+			Shelter.animalDrinks(0.5);
 			super.drinkSome();
 		}
 	}
 
 	@Override
 	public void play() {
-		super.playSome();
+		if (super.getBoredom() > 5) {
+			super.playSome();
+			System.out.println(super.getName() + " is playing with a rubber chicken.");
+		}
 
 	}
-	
+
 	// a prepared integer return method for unforeseen use
 	@Override
 	public int flexAction() {
 		super.playSome();
 		super.goPoo();
 		return 0;
+	}
+
+	@Override
+	public double getHealth() {
+		double health = ((10 - ((getHunger() + getThirst() + getBoredom() + getPoo()) / 4)) * 10);
+
+		return health;
+
 	}
 
 }

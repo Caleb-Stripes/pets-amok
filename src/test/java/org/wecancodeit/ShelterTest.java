@@ -54,15 +54,4 @@ public class ShelterTest {
 		assertEquals("The dog cages is fresh.", result4);
 	}
 	
-	@Test
-	public void walkingAnOrganicDogShouldResetPooAndBoredom( ) {
-		underTest.tickAllPets();
-		underTest.tickAllPets();
-		underTest.tickAllPets();
-			}
-	
-	@Test
-	public void shouldAddCustomPetToShelter() {
-		
-	}
 }

@@ -22,16 +22,19 @@ Modify organic tick() to indicate the amount of waste a pet creates
 
 Code oiling and charging methods for robotic pets
 
-Current Code Objectives
-***********************
-
 Revise or Code dogWalk method to decrease chance to soil cage and increase happiness (this will use iterable/iterator)
 
 TDD shelter robot pets oil and charge levels
 
+Insure that robot pets can't be fed or watered and organic pets cannot be oiled or charged
+
+Current Code Objectives
+***********************
+
+Introduce methods that allow user to walkAllDogs, cleanAllCages, emptyAllLitterBoxes, and oilAllRobots
+
 Foreseeable Code Objectives
 ***************************
-
 
 Review that all variables are properly encapsulated
 
@@ -39,11 +42,10 @@ Review that all methods have correct visibility modifiers
 
 Code in an over-all health variable based on the other statistics of the animals
 
-Insure that robot pets can't be fed or watered and organic pets cannot be oiled or charged
-
-Introduce methods that allow user to walkAllDogs, cleanAllCages, emptyAllLitterBoxes, and oilAllRobots
-
 In addition to previous shelter applications functions, add options for the do-all methods
+
+
+
 
 
 

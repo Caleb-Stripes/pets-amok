@@ -25,6 +25,10 @@ public abstract class Animal {
 	public void getStatus() {
 
 	}
+	
+	public double getHealth() {
+		return 0;
+	}
 
 	public int flexAction() {
 		return 0;

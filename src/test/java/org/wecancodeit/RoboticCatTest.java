@@ -6,14 +6,13 @@ import org.junit.Test;
 
 public class RoboticCatTest {
 
-	RoboticCat underTest = new RoboticCat(null, null, null, 10, 10, null);
+	RoboticCat underTest = new RoboticCat(null, null, 10, 10, null);
 	
 	@Test
 	public void roboticDogLubeTicksFast() {
 		int lBefore = underTest.getLubeLevel();
 		int eBefore = underTest.getEnergyLevel();
-		underTest.robotAnimalTick();
-		underTest.robotCatTick();
+		underTest.tick();
 		int lAfter = underTest.getLubeLevel();
 		int eAfter = underTest.getEnergyLevel();
 		assertEquals(eBefore-3, eAfter);
